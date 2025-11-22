@@ -1,16 +1,27 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const posts = [
+	{
+		title: "Duck Hunt Development",
+		url: "duck-hunt",
+	},
+	{
+		title: "Soccer Robot Software",
+		url: "thunderbots",
+	},
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle="Blog Index | blog.nycrat.dev">
+	<h1>blog.nycrat.dev</h1>
+	<ul>
+		{
+			posts.map((info) => (
+				<li>
+					<a href={`/posts/${info.url}`}>{info.title}</a>
+				</li>
+			))
+		}
+	</ul>
+</BaseLayout>

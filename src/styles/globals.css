@@ -1,0 +1,17 @@
+body {
+  font-family: "Iosevka Web", monospace;
+  padding: 0;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  font-size: 125%;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 175%;
+}
