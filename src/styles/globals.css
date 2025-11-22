@@ -48,3 +48,9 @@ ul,
 ol {
   list-style-position: inside;
 }
+
+@media screen and (min-width: 600px) {
+  main {
+    padding: 60px;
+  }
+}
