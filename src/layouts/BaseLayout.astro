@@ -2,6 +2,8 @@
 import "../styles/iosevka.css";
 import "../styles/globals.css";
 
+import Header from "../components/Header.astro";
+
 const { pageTitle } = Astro.props;
 ---
 
@@ -14,9 +16,9 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
+    <Header />
     <main>
       <slot />
     </main>
   </body>
 </html>
-
