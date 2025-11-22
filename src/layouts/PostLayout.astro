@@ -5,6 +5,7 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout pageTitle={frontmatter.title}>
   <h1>{frontmatter.title}</h1>
+  <blockquote>{frontmatter.subtitle}</blockquote>
   <div>
     v{frontmatter.version} ({frontmatter.lastUpdated.slice(0, 10)})
     <br />
@@ -18,10 +19,16 @@ const { frontmatter } = Astro.props;
   h1 {
     font-weight: 900;
     font-size: 300%;
+    line-height: 1;
   }
 
   div {
     font-style: italic;
     color: var(--gray);
+  }
+
+  blockquote {
+    font-style: italic;
+    font-weight: bold;
   }
 </style>
