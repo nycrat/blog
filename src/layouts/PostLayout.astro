@@ -5,6 +5,28 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout pageTitle={frontmatter.title}>
   <h1>{frontmatter.title}</h1>
+  <div>
+    v{frontmatter.version} ({frontmatter.lastUpdated.slice(0, 10)})
+    <br />
+    Published {frontmatter.date.slice(0, 10)}
+  </div>
 
   <slot />
 </BaseLayout>
+
+<style>
+  h1 {
+    font-weight: 900;
+  }
+
+  div {
+    font-style: italic;
+    color: var(--gray);
+  }
+
+  @media screen and (min-width: 600px) {
+    h1 {
+      font-size: 300%;
+    }
+  }
+</style>

@@ -7,18 +7,37 @@ body {
   font-weight: 300;
 
   --purple: #672378;
+  --gray: #666666;
 }
 
 main {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 h1 {
   margin: 0;
-  padding: 0;
   font-size: 175%;
+}
+
+h2 {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 150%;
+}
+
+h3 {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 125%;
+}
+
+p {
+  margin: 0;
 }
 
 a {

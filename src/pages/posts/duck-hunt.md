@@ -1,8 +1,21 @@
 ---
 layout: ../../layouts/PostLayout.astro
 title: "Duck Hunt Development"
-version: "0.0.1"
-date: 2025-10-22
+date: 2025-11-22
+version: "0.0.0"
+lastUpdated: 2025-11-22
 ---
 
+## Background information
+
 i made a web app yes
+
+## Choosing the stack
+
+## Initial development
+
+## Security risks
+
+## Refactoring backend
+
+## Future improvements
