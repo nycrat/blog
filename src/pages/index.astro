@@ -1,27 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const posts = [
-	{
-		title: "Duck Hunt Development",
-		url: "duck-hunt",
-	},
-	{
-		title: "Soccer Robot Software",
-		url: "thunderbots",
-	},
-];
+const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 ---
 
 <BaseLayout pageTitle="Blog Index | blog.nycrat.dev">
 	<h1>blog.nycrat.dev</h1>
 	<ul>
 		{
-			posts.map((info) => (
-				<li>
-					<a href={`/posts/${info.url}`}>{info.title}</a>
-				</li>
-			))
+			posts
+				.toSorted((a: any, b: any) => {
+					const dateA = new Date(a.frontmatter.date);
+					const dateB = new Date(b.frontmatter.date);
+					return dateA.getTime() - dateB.getTime();
+				})
+				.map((post: any) => (
+					<li>
+						<a href={post.url}>{post.frontmatter.title}</a>
+					</li>
+				))
 		}
 	</ul>
 </BaseLayout>
