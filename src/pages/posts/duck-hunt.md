@@ -3,7 +3,7 @@ layout: ../../layouts/PostLayout.astro
 title: "DuckHunt Development"
 subtitle: "Being able to work on something for hours at a time shows you have passion"
 date: 2025-11-22
-version: "0.1.1"
+version: "0.2.0"
 lastUpdated: 2025-11-22
 ---
 
@@ -46,6 +46,60 @@ to say _"Hey, I can just make our own version of this app."_ And that leads us
 to creating ~~Goosechase~~ [DuckHunt](https://github.com/nycrat/duck-hunt/).
 
 ## Choosing the stack
+
+The first decision I had to make before starting the development of this app is
+what tech stack I would be using. While the user experience would probably be
+better as a mobile application, we don't really want participants to have to
+install an app to participate. Also, the process of getting an application onto
+the Apple app store or Google play store requires money which kind of defeats
+the entire point of this endeavour. So, I decided on a web application. I also
+had two requirements in my head when choosing the specific languages and
+frameworks to build this app.
+
+1. It needs to allow for quick development; I don't want to work on this
+   project for a long time, especially as finals are coming up. I've had the
+   experience of burning out and not finishing a project too often, and need
+   this project to get done quick.
+2. This should be an experience to learn something new; I've worked on too many
+   Next.js projects recently and my mind tells me to learn something new. I
+   don't just want to push out another web app, I want to improve myself as
+   a developer.
+
+### Frontend choices
+
+The three options I considered using were **Solid, Svelte, and Astro** (I also
+briefly considered using vanilla javascript but for obvious reasons I decided
+against that). After learning more about Astro, I decided it was better for a
+content-heavy mainly static website (I ended up making this blog site with
+Astro instead), so I ruled it out. And for Svelte, the main reason I considered
+it was because of the [UBC CSSS](https://ubccsss.org/) and [Competitive
+Programming Club](https://icpc.cs.ubc.ca/) websites made by a fellow UBC
+student by the name of [polarity](https://github.com/polarr/). It seems like a
+good frontend framework that I would like to learn at some point. However, I
+chose Solid mainly because I already had some experience with it, but I would
+still like to create another project to get more experience with it. It also
+seemed more appropriate for this simple interactive web app. However, I feel
+that Svelte would have been a fine option, and I hope to do some development
+with Svelte for another project later on.
+
+### Backend choices
+
+For the server, I could have honestly chosen anything because of the simple
+nature of this project, so I decided that this could be a good opportunity to
+learn a completely new library/framework/language. I was thinking of Actix-web
+for Rust since I've only used that framework for WebSockets when making [Duck
+Simulator](https://github.com/nycrat/duck-simulator/), maybe Flask for Python,
+Ruby on Rails, even just Express.js to keep it simple. But in the end,I decided
+on using Golang and the `net/http` package in the Golang standard library. Now
+although I have [tried learning
+Golang](https://youtu.be/J8VtJxtJbwc?si=a9QSkwAm8BHbTU9V) a while ago, I didn't
+end up building any projects with it, so I never learned it that well. So, this
+was the perfect opportunity to do some project-based learning for Golang.
+
+Another choice for the backend I needed to make was which database to use. I
+honestly didn't think too much about this. I just used PostgreSQL because I
+was pretty familiar with it but still wanted to get more familiar, the same
+reason I chose Solid for the frontend.
 
 ## Initial development
 
