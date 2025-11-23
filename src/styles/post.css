@@ -1,0 +1,19 @@
+h2 {
+  margin-top: 10px;
+  font-size: 150%;
+}
+
+h3 {
+  margin-top: 10px;
+  font-size: 125%;
+}
+
+:not(.astro-code) > code {
+  background: var(--lightgray);
+  border-radius: 2.5px;
+  padding: 0 2.5px;
+}
+
+strong {
+  font-weight: 500;
+}

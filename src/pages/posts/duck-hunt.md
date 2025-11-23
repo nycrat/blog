@@ -103,6 +103,16 @@ reason I chose Solid for the frontend.
 
 ## Initial development
 
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("helo world !!!")
+}
+```
+
 ## Security risks
 
 ## Refactoring backend
