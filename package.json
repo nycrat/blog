@@ -10,6 +10,7 @@
     "format": "prettier -w ."
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.12",
     "astro": "^5.16.0"
   },
   "devDependencies": {

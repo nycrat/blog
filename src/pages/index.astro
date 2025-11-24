@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
+const posts = Object.values(
+	import.meta.glob("./posts/*.{md,mdx}", { eager: true }),
+);
 ---
 
 <BaseLayout pageTitle="Blog Index | blog.nycrat.dev">

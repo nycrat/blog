@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   markdown: {
@@ -8,4 +10,6 @@ export default defineConfig({
       theme: "github-light",
     },
   },
+
+  integrations: [mdx()],
 });
