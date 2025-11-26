@@ -7,8 +7,7 @@ const posts = Object.values(
 ---
 
 <BaseLayout pageTitle="Blog Index | blog.nycrat.dev">
-	<h1>Index</h1>
-	<ul>
+	<div class="posts-container">
 		{
 			posts
 				.toSorted((a: any, b: any) => {
@@ -17,10 +16,61 @@ const posts = Object.values(
 					return dateB.getTime() - dateA.getTime();
 				})
 				.map((post: any) => (
-					<li>
-						<a href={post.url}>{post.frontmatter.title}</a>
-					</li>
+					<div class="post-preview-container">
+						<h1>
+							<a href={post.url}>{post.frontmatter.title}</a>
+						</h1>
+						<span class="metadata">{post.frontmatter.date} ~ 
+							<ul>
+								{post.frontmatter.tags.map((tag: string) => (
+								<li>{tag}</li>
+								))}
+							</ul>
+						</span>
+						<!-- TODO: move thumbnail and post images into same directory -->
+						<img
+							src={post.frontmatter.thumbnail}
+							alt={post.frontmatter.title}
+						/>
+					</div>
 				))
 		}
-	</ul>
+	</div>
 </BaseLayout>
+
+<style>
+	h1 {
+		font-size: 225%;
+	}
+
+	.posts-container {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.post-preview-container {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.post-preview-container > img {
+		border: 1px solid var(--gray);
+	}
+
+	.metadata {
+		color: var(--gray);
+	}
+
+	ul,
+	li {
+		list-style-type: none;
+		display: inline;
+	}
+
+	li:nth-last-child(n + 2)::after {
+		padding: 0 5px;
+		content: "\00b7";
+	}
+</style>
