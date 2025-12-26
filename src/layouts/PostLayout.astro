@@ -8,8 +8,6 @@ const { frontmatter } = Astro.props;
   <h1>{frontmatter.title}</h1>
   <blockquote>{frontmatter.subtitle}</blockquote>
   <div>
-    v{frontmatter.version} ({frontmatter.lastUpdated})
-    <br />
     Published {frontmatter.date}
   </div>
 

@@ -3,8 +3,6 @@ layout: ../../layouts/PostLayout.astro
 title: Template Post
 subtitle: Templates are never necessary, but sometimes they just make your life easier
 date: "1970-01-01"
-version: 0.0.0
-lastUpdated: "1980-01-01"
 tags: [template]
 ---
 
