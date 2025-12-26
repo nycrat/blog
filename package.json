@@ -10,8 +10,8 @@
     "format": "prettier -w ."
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.12",
-    "astro": "^5.16.0"
+    "@astrojs/mdx": "^4.3.13",
+    "astro": "^5.16.6"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
