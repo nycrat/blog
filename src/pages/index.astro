@@ -1,10 +1,15 @@
 ---
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const posts = Object.values(
 	import.meta.glob("./posts/*.{md,mdx}", { eager: true }),
 );
+
+const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
+	eager: true,
+}) as Record<string, { default: ImageMetadata }>;
 ---
 
 <BaseLayout pageTitle="Blog Index | blog.nycrat.dev">
@@ -28,11 +33,12 @@ const posts = Object.values(
 								))}
 							</ul>
 						</span>
-						<!-- TODO: move thumbnail and post images into same directory -->
-						<Image
-							src={import(`./posts/images/${post.url.split("/")[2]}/thumbnail.png`)}
-							alt={post.frontmatter.title}
-						/>
+						{post.frontmatter.thumbnail && thumbnails[post.frontmatter.thumbnail] && (
+							<Image
+								src={thumbnails[post.frontmatter.thumbnail].default}
+								alt={post.frontmatter.title}
+							/>
+						)}
 					</div>
 				))
 		}
