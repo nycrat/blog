@@ -3,21 +3,39 @@
 ---
 
 <header>
-  <h1><a href="/">blog.nycrat.dev</a></h1>
+  <div class="container">
+    <a href="/"><h1>nycrat's blog</h1></a>
+    <a href="https://github.com/nycrat"
+      ><img src="/github.svg" alt="nycrat's Github" /></a
+    >
+  </div>
 </header>
 
 <style>
   header {
-    padding: 24px;
+    padding: 16px;
     background: var(--purple);
     color: white;
   }
 
-  a {
-    color: white;
+  h1 {
+    font-size: 200%;
   }
 
-  h1 {
-    font-size: 175%;
+  .container {
+    margin: auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  img {
+    height: 2em;
   }
 </style>
