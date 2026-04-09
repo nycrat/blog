@@ -2,10 +2,11 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Post } from "../types/post";
 
 const posts = Object.values(
 	import.meta.glob("./posts/*.{md,mdx}", { eager: true }),
-);
+) as Post[];
 
 const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
 	eager: true,
@@ -15,13 +16,13 @@ const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
 <BaseLayout pageTitle="Blog Index | blog.nycrat.dev">
 	<div class="posts-container">
 		{
-			posts.filter((post: any) => post.url !== "/posts/template")
-				.toSorted((a: any, b: any) => {
+			posts.filter((post) => post.url !== "/posts/template")
+				.toSorted((a, b) => {
 					const dateA = new Date(a.frontmatter.date);
 					const dateB = new Date(b.frontmatter.date);
 					return dateB.getTime() - dateA.getTime();
 				})
-				.map((post: any) => (
+				.map((post) => (
 					<div class="post-preview-container">
 						<h1>
 							<a href={post.url}>{post.frontmatter.title}</a>
