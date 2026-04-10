@@ -6,8 +6,8 @@
 
 body {
   font-family: "Iosevka Web", monospace;
-
   font-weight: 300;
+  font-size: 18px;
 
   --purple: #672378;
   --gray: #666666;
