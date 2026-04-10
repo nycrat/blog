@@ -13,7 +13,7 @@ const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
 }) as Record<string, { default: ImageMetadata }>;
 ---
 
-<BaseLayout pageTitle="Blog Index | blog.nycrat.dev">
+<BaseLayout pageTitle="Posts · blog.nycrat.dev">
 	<div class="posts-container">
 		{
 			posts.filter((post) => post.url !== "/posts/template")
