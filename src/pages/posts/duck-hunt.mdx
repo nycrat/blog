@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/PostLayout.astro
 title: DuckHunt Development
-subtitle: Being able to work on something for hours at a time shows you have passion
 date: "2025-11-22"
+subtitle: Building this personal project saved our hackathon committee $1199
 tags: [web dev, go, solid]
 thumbnail: ./posts/images/duck-hunt/thumbnail.png
 ---
@@ -195,14 +195,58 @@ json data that the client would need to fetch from the server. Using the
 `encoding/json` library, the route handler could serialize Go structs into JSON
 to be parsed by the frontend.
 
-(database integration)
+The next logical step was to add database integration so that user data could
+be stored persistently. I used a PostgreSQL database hosted on
+[Neon](https://neon.com/), though if I could do this project again, I would
+definitely explore the option of using SQLite hosted on the local filesystem of
+the server. This was the only external service other than the server hosting
+that I used, and it would have been quite interesting to handle everything from
+the server, database, authentication, etc. so that anyone could launch a local
+instance of DuckHunt.
 
-(other stuff)
+### Authentication
 
-## Security risks
+The authentication for DuckHunt was quite an interesting part of the backend
+that came from the circumstances surrounding the project. Since this web app's
+primary purpose is to be used by hackathon participants, they don't necessarily
+need the option to create an account or edit their password for this one event.
+So, instead of using the common username + password authentication, I decided
+on implementing a user-specific token/passcode for each user. This approach
+does have some security risks, for example, the passcodes are stored without
+applying a salt, since there is no way to store a unique salt for each passcode
+without a username. Instead, there is a shared-secret
+[pepper](<https://en.wikipedia.org/wiki/Pepper_(cryptography)>) that is used
+for all passcodes when hashing. With all that being said, security is always as
+strong as the weakest link, and somewhere out there is a spreadsheet with every
+user's passcode, along with emails to every user containing their passcode in
+plain text...
 
-## Using middleware
+### Handler-service-repository pattern
 
-## Refactoring backend
+Something else that I learned during this project was the
+Handler-Service-Repository pattern, which is a type of layered architecture
+specific to backend development. Handler functions are responsible for reading
+the HTTP requests, parsing the information, and writing a response. In this
+handler function, it might delegate some logic to the service layer. Service
+functions should contain operations such as reading and writing from the
+database and performing more complex logic if needed. However, the database
+logic should be further separated into the repository layer, and called from
+the service layer. However, when implementing this pattern, I realized that the
+backend did not require that much logic which would make the service layer a
+needless abstraction. So, DuckHunt technically uses a handler-repository
+pattern. By implementing this pattern, it enforces the separation of concerns
+principle, making sure that no one class or function has too many
+responsibilities.
 
 ## Future improvements
+
+In the future, I would like to make DuckHunt a more complete digital scavenger
+hunt platform (like Goosechase); it should be possible for users to create
+experiences with prompts and invite other users to join using a code or link. I
+would also like to integrate OAuth so that the user experience of logging in
+would be easier, and specifically for a Hackathon, the email for each
+participant would already be linked. I also look forward to improving the UI of
+the frontend. Even though I like the minimal aesthetic, I want it to appeal to
+more people and also be more accessible. I'm looking forward already for Hack
+The Coast 2027 and getting even more participants using DuckHunt to make their
+hackathon experience even more memorable!
