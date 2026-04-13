@@ -16,7 +16,8 @@ const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
 <BaseLayout pageTitle="Posts · blog.nycrat.dev">
 	<div class="posts-container">
 		{
-			posts.filter((post) => post.url !== "/posts/template")
+			posts
+				.filter((post) => post.url !== "/posts/template")
 				.toSorted((a, b) => {
 					const dateA = new Date(a.frontmatter.date);
 					const dateB = new Date(b.frontmatter.date);
@@ -27,19 +28,22 @@ const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
 						<h1>
 							<a href={post.url}>{post.frontmatter.title}</a>
 						</h1>
-						<span class="metadata">{post.frontmatter.date} ~ 
+						<blockquote>{post.frontmatter.subtitle}</blockquote>
+						<span class="metadata">
+							{post.frontmatter.date} ~
 							<ul>
 								{post.frontmatter.tags.map((tag: string) => (
-								<li>{tag}</li>
+									<li>{tag}</li>
 								))}
 							</ul>
 						</span>
-						{post.frontmatter.thumbnail && thumbnails[post.frontmatter.thumbnail] && (
-							<Image
-								src={thumbnails[post.frontmatter.thumbnail].default}
-								alt={post.frontmatter.title}
-							/>
-						)}
+						{post.frontmatter.thumbnail &&
+							thumbnails[post.frontmatter.thumbnail] && (
+								<Image
+									src={thumbnails[post.frontmatter.thumbnail].default}
+									alt={post.frontmatter.title}
+								/>
+							)}
 					</div>
 				))
 		}
