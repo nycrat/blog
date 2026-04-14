@@ -5,10 +5,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import type { Post } from "../types/post";
 
 const posts = Object.values(
-	import.meta.glob("./posts/*.{md,mdx}", { eager: true }),
+	import.meta.glob("./posts/*.mdx", { eager: true }),
 ) as Post[];
 
-const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
+const thumbnails = import.meta.glob("./posts/images/**/*.{png,jpg,webp}", {
 	eager: true,
 }) as Record<string, { default: ImageMetadata }>;
 ---
