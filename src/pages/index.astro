@@ -85,5 +85,13 @@ const thumbnails = import.meta.glob("./posts/images/*/thumbnail.png", {
 	img {
 		max-width: 100%;
 		height: auto;
+		aspect-ratio: 3/2;
+		object-fit: cover;
+	}
+
+	@media screen and (min-width: 600px) {
+		img {
+			aspect-ratio: 16/9;
+		}
 	}
 </style>
