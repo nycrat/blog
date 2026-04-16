@@ -14,60 +14,53 @@ const thumbnails = import.meta.glob("./posts/images/**/*.{png,jpg,webp}", {
 ---
 
 <BaseLayout pageTitle="Posts · blog.nycrat.dev">
-	<div class="posts-container">
-		{
-			posts
-				.filter((post) => post.url !== "/posts/template")
-				.toSorted((a, b) => {
-					const dateA = new Date(a.frontmatter.date);
-					const dateB = new Date(b.frontmatter.date);
-					return dateB.getTime() - dateA.getTime();
-				})
-				.map((post) => (
-					<div class="post-preview-container">
-						<h1>
-							<a href={post.url}>{post.frontmatter.title}</a>
-						</h1>
-						<blockquote>{post.frontmatter.subtitle}</blockquote>
-						<span class="metadata">
-							{post.frontmatter.date} ~
-							<ul>
-								{post.frontmatter.tags.map((tag: string) => (
-									<li>{tag}</li>
-								))}
-							</ul>
-						</span>
-						{post.frontmatter.thumbnail &&
-							thumbnails[post.frontmatter.thumbnail] && (
-								<Image
-									src={thumbnails[post.frontmatter.thumbnail].default}
-									alt={post.frontmatter.title}
-								/>
-							)}
-					</div>
-				))
-		}
-	</div>
+	{
+		posts
+			.toSorted((a, b) => {
+				const dateA = new Date(a.frontmatter.date);
+				const dateB = new Date(b.frontmatter.date);
+				return dateB.getTime() - dateA.getTime();
+			})
+			.map((post) => (
+				<div class="post">
+					<h1>
+						<a href={post.url}>{post.frontmatter.title}</a>
+					</h1>
+					<blockquote>{post.frontmatter.subtitle}</blockquote>
+					<span class="meta">
+						{post.frontmatter.date} ~
+						<ul>
+							{post.frontmatter.tags.map((tag: string) => (
+								<li>{tag}</li>
+							))}
+						</ul>
+					</span>
+					{post.frontmatter.thumbnail &&
+						thumbnails[post.frontmatter.thumbnail] && (
+							<Image
+								src={thumbnails[post.frontmatter.thumbnail].default}
+								alt={post.frontmatter.title}
+							/>
+						)}
+				</div>
+			))
+	}
 </BaseLayout>
 
 <style>
-	.posts-container {
-		display: flex;
-		flex-direction: column;
-		gap: 30px;
-	}
-
-	.post-preview-container {
+	.post {
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		padding-bottom: 30px;
+		border-bottom: 1px solid var(--lightgray);
 	}
 
-	.post-preview-container > img {
-		border: 1px solid var(--gray);
+	.post:last-child {
+		border-bottom: none;
 	}
 
-	.metadata {
+	.meta {
 		color: var(--gray);
 	}
 
@@ -83,6 +76,7 @@ const thumbnails = import.meta.glob("./posts/images/**/*.{png,jpg,webp}", {
 	}
 
 	img {
+		border: 1px solid var(--gray);
 		max-width: 100%;
 		height: auto;
 		aspect-ratio: 3/2;

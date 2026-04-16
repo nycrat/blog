@@ -5,18 +5,26 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title + " · blog.nycrat.dev"}>
-  <h1>{frontmatter.title}</h1>
-  <blockquote>{frontmatter.subtitle}</blockquote>
-  <div>
-    Published {frontmatter.date}
+  <div class="meta">
+    <h1>{frontmatter.title}</h1>
+    <blockquote>{frontmatter.subtitle}</blockquote>
+    <div class="date">
+      Published {frontmatter.date}
+    </div>
   </div>
 
   <slot />
 </BaseLayout>
 
 <style>
-  div {
+  .date {
     font-style: italic;
     color: var(--gray);
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 </style>
