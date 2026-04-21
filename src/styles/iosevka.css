@@ -4,9 +4,7 @@
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
-  src:
-    url("/fonts/WOFF2/Iosevka-Light.woff2") format("woff2"),
-    url("/fonts/TTF/Iosevka-Light.ttf") format("truetype");
+  src: url("/fonts/IosevkaWeb-Light.woff2") format("woff2");
 }
 
 @font-face {
@@ -15,9 +13,7 @@
   font-weight: 300;
   font-stretch: normal;
   font-style: italic;
-  src:
-    url("/fonts/WOFF2/Iosevka-LightItalic.woff2") format("woff2"),
-    url("/fonts/TTF/Iosevka-LightItalic.ttf") format("truetype");
+  src: url("/fonts/IosevkaWeb-LightItalic.woff2") format("woff2");
 }
 
 /* Post subtitle and figure caption, only italic */
@@ -27,9 +23,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-style: italic;
-  src:
-    url("/fonts/WOFF2/Iosevka-MediumItalic.woff2") format("woff2"),
-    url("/fonts/TTF/Iosevka-MediumItalic.ttf") format("truetype");
+  src: url("/fonts/IosevkaWeb-MediumItalic.woff2") format("woff2");
 }
 
 /* Post and website title, no italic */
@@ -39,7 +33,5 @@
   font-weight: 900;
   font-stretch: normal;
   font-style: normal;
-  src:
-    url("/fonts/WOFF2/Iosevka-Heavy.woff2") format("woff2"),
-    url("/fonts/TTF/Iosevka-Heavy.ttf") format("truetype");
+  src: url("/fonts/IosevkaWeb-Heavy.woff2") format("woff2");
 }
