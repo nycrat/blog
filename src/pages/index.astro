@@ -40,6 +40,7 @@ const thumbnails = import.meta.glob("./posts/images/**/*.{png,jpg,webp}", {
 							<Image
 								src={thumbnails[post.frontmatter.thumbnail].default}
 								alt={post.frontmatter.title}
+								width={1500}
 							/>
 						)}
 				</div>
