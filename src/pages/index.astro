@@ -8,7 +8,7 @@ const posts = Object.values(
 	import.meta.glob("./posts/*.mdx", { eager: true }),
 ) as Post[];
 
-const thumbnails = import.meta.glob("./posts/images/**/*.{png,jpg,webp}", {
+const thumbnails = import.meta.glob("../assets/**/*.{png,jpg,webp}", {
 	eager: true,
 }) as Record<string, { default: ImageMetadata }>;
 ---
